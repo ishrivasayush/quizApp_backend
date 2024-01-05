@@ -1,8 +1,6 @@
 package com.narainox.quizappbackend.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,6 +13,9 @@ import java.util.List;
 @NoArgsConstructor
 @Table(name = "quiz")
 public class Quiz {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer quizID;
     private String title;
     @ManyToMany

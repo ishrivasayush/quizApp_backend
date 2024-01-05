@@ -12,20 +12,22 @@ import java.util.List;
 @Service
 public class QuizServiceImpl implements QuizService {
 
-    private QuestionRepository questionRepository;
-    private QuizRepository quizRepository;
 
-    public QuizServiceImpl(QuestionRepository questionRepository, QuizRepository quizRepository) {
-        this.questionRepository = questionRepository;
+    private QuizRepository quizRepository;
+    private QuestionRepository questionRepository;
+
+    public QuizServiceImpl(QuizRepository quizRepository, QuestionRepository questionRepository) {
         this.quizRepository = quizRepository;
+        this.questionRepository = questionRepository;
     }
 
     @Override
     public String create(String category, int numQues, String title) {
-        List<Question> questions=questionRepository.findRandomQuestionBycategory(category,numQues);
+        List<Question> questions=questionRepository.findRandomQuestionByCategory(category,numQues);
         Quiz quiz=new Quiz();
         quiz.setTitle(title);
         quiz.setQuestions(questions);
-        return null;
+        quizRepository.save(quiz);
+        return "Success";
     }
 }
