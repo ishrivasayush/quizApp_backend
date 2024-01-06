@@ -2,9 +2,9 @@ package com.narainox.quizappbackend.services.impl;
 
 import com.narainox.quizappbackend.exception.ResourceNotFoundException;
 import com.narainox.quizappbackend.models.Question;
-import com.narainox.quizappbackend.repository.QuestionRepository;
+import com.narainox.quizappbackend.repository.QuestionRepo;
 import com.narainox.quizappbackend.services.QuestionService;
-import org.springframework.stereotype.Repository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,11 +12,8 @@ import java.util.List;
 @Service
 public class QuestionServiceImpl implements QuestionService {
 
-    private QuestionRepository questionRepository;
-
-    public QuestionServiceImpl(QuestionRepository questionRepository) {
-        this.questionRepository = questionRepository;
-    }
+    @Autowired
+    private QuestionRepo questionRepository;
 
     @Override
     public List<Question> getAllQuestion() {

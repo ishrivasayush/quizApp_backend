@@ -3,6 +3,7 @@ package com.narainox.quizappbackend.controllers;
 import com.narainox.quizappbackend.models.Question;
 import com.narainox.quizappbackend.payloads.ApiResponse;
 import com.narainox.quizappbackend.services.QuestionService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,10 +14,9 @@ import java.util.List;
 @RequestMapping("/question")
 public class QuestionController {
 
+    @Autowired
     private QuestionService questionService;
-    public QuestionController(QuestionService questionService) {
-        this.questionService = questionService;
-    }
+
 
     @GetMapping("/category/{category}")
     public ResponseEntity<List<Question>> getAllQuestionByCategory(@PathVariable String category)

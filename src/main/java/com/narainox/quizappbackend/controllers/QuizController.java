@@ -2,6 +2,7 @@ package com.narainox.quizappbackend.controllers;
 
 import com.narainox.quizappbackend.services.QuizService;
 import jdk.jfr.Category;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,11 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/quiz")
 public class QuizController {
 
+    @Autowired
     private QuizService quizService;
 
-    public QuizController(QuizService quizService) {
-        this.quizService = quizService;
-    }
+
 
 
     // http://localhost:8081/quiz/create?category=java&NumQues=5&title=javaQUiz
